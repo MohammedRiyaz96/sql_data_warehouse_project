@@ -25,3 +25,9 @@ This project comprises 4 phases.
   - **Basic Explorations:** Includes exploring database tables and its columns, exploring dimensions, dates and measures, magnitude and                                ranking analysis.
   - **Advanced Analytics:** Interpreted with Change-Over-Time, Cumulative, Performance, Part-to-Whole, Data Segmentation analysis.
   - **Reporting:** Built reports with metrics and KPIs for business insights.
+
+---
+## Repository Structure
+
+<img width="590" height="210" alt="image" src="https://github.com/user-attachments/assets/fbed29fd-501c-4ae3-884d-4d7f10ffe684" />
+
