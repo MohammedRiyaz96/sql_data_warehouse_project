@@ -1,4 +1,4 @@
-# **Data Warehouse and Analytics Project**
+# **Data Warehouse and ETL Analytics Project**
 
 This project engineers a comprehensive data warehousing and analytics solution, from building a data warehouse encompassing end-to-end ETL processes to developing actionable insights for business intelligence and reporting.
 
