@@ -11,13 +11,17 @@ This project comprises 4 phases.
   - **Stage Layer:** Prepares data for analysis. Transformations include data cleansing, standardization, normalization, etc. were handled                      in this phase.
   - **Report Layer:** Keeps data ready for business to analyze. Data modeled in star schema for analytics reporting.
 
+
 2. **ETL Process:** Involves with Extracting, Transforming and Loading data from source systems into data warehouse.
-  - Extraction: Full Extraction (method-Pull), File Parsing (.csv).
-  - Transformation: Data Cleansing (remove duplicates, handling missing data, handling invalid values, data filtering, handling extra                          spaces, data type casting), Data Aggregations, Data Standardization, Data Integration, Derived Columns and Data                            Enrichment.
-  - Loading: Batch Processing, Full Load (truncate & insert), SCD 1.  
+  - **Extraction:** Full Extraction (method-Pull), File Parsing (.csv).
+  - **Transformation:** Data Cleansing (remove duplicates, handling missing data, handling invalid values, data filtering, handling extra                          spaces, data type casting), Data Aggregations, Data Standardization, Data Integration, Derived Columns and Data                            Enrichment.
+  - **Loading:** Batch Processing, Full Load (truncate & insert), SCD 1.  
+
 
 3. **Data Modeling:** Modeled data into Dimension and Fact tables with relationships for query analysis.
 
-4. **Analytics & Reporting:** Performed basic explorations, advanced analytics and built reports with metrics and KPIs for business insights.
-  - Basic Explorations: Includes exploring database tables and its columns, exploring dimensions, dates and measures, magnitude and            ranking analysis.
-  - Advanced Analytics: 
+
+4. **Analytics & Reporting:** Performed basic explorations, advanced analytics and reporting.
+  - **Basic Explorations:** Includes exploring database tables and its columns, exploring dimensions, dates and measures, magnitude and                                ranking analysis.
+  - **Advanced Analytics:** Interpreted with Change-Over-Time, Cumulative, Performance, Part-to-Whole, Data Segmentation analysis.
+  - **Reporting:** Built reports with metrics and KPIs for business insights.
