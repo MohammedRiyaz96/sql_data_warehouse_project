@@ -25,7 +25,7 @@ CREATE VIEW report.dim_customers AS
 		la.cntry AS country,
 		ci.cst_marital_status AS marital_status,
 		CASE 
-			WHEN ci.cst_gndr = 'NA' THEN COALESCE(ca.gen, 'NA')
+			WHEN ci.cst_gndr = 'NA' THEN COALESCE(ca.gen, 'NA')					-- Data Validation & Consistency
 			ELSE ci.cst_gndr
 			END AS gender,
 		ca.bdate AS birth_date,
