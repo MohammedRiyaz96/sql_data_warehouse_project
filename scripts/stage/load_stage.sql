@@ -45,10 +45,10 @@ BEGIN
 			cst_id,
 			cst_key,
 			TRIM(cst_firstname) AS cst_firstname,											
-			TRIM(cst_lastname) AS cst_lastname,											                        -- Handling Extra Space
+			TRIM(cst_lastname) AS cst_lastname,											          -- Handling Extra Space
 			CASE WHEN UPPER(TRIM(cst_marital_status)) = 'M' THEN 'Married'				          -- Data Standardization
 				 WHEN UPPER(TRIM(cst_marital_status)) = 'S' THEN 'Single'   
-				 ELSE 'NA'																                                    -- Handling Missing Value
+				 ELSE 'NA'																          -- Handling Missing Value
 				 END AS cst_marital_status,
 			CASE WHEN UPPER(TRIM(cst_gndr)) = 'M' THEN 'Male'
 				 WHEN UPPER(TRIM(cst_gndr)) = 'F' THEN 'Female'
@@ -60,7 +60,7 @@ BEGIN
 			FROM raw.crm_cust_info
 			WHERE cst_id IS NOT NULL													-- Removing Nulls 
 			) x
-		WHERE flag_last = 1;															  -- Removing Duplicates 
+		WHERE flag_last = 1;															-- Removing Duplicates 
 
 		SET @end_time = GETDATE();
 
@@ -88,19 +88,19 @@ BEGIN
 		SELECT
 			prd_id,
 			REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_') AS cat_id,							
-			SUBSTRING(prd_key, 7, LEN(prd_key)) AS prd_key,								-- Derived New Column
+			SUBSTRING(prd_key, 7, LEN(prd_key)) AS prd_key,								 -- Derived New Column
 			prd_nm,
-			ISNULL(prd_cost, 0) AS prd_cost,											        -- Handling Missing Value
-			CASE UPPER(TRIM(prd_line))													          -- Handling Extra Space
-				 WHEN 'M' THEN 'Mountain'												            -- Data Standardization
+			ISNULL(prd_cost, 0) AS prd_cost,											 -- Handling Missing Value
+			CASE UPPER(TRIM(prd_line))											         -- Handling Extra Space
+				 WHEN 'M' THEN 'Mountain'										         -- Data Standardization
 				 WHEN 'R' THEN 'Road'
 				 WHEN 'S' THEN 'Other Sales'
 				 WHEN 'T' THEN 'Touring'
-				 ELSE 'NA'																                  -- Handling Missing Value
+				 ELSE 'NA'																 -- Handling Missing Value
 				 END AS prd_line,
-			CAST(prd_start_dt AS DATE) AS prd_start_dt,									  -- Type Casting
+			CAST(prd_start_dt AS DATE) AS prd_start_dt,									 -- Type Casting
 			CAST(LEAD(prd_start_dt) OVER(PARTITION BY prd_key ORDER BY prd_start_dt) - 1 AS DATE) AS prd_end_dt					
-																					                        	-- Data Enrichment
+																					     -- Data Enrichment
 		FROM raw.crm_prd_info;
 
 		SET @end_time = GETDATE();
@@ -133,7 +133,7 @@ BEGIN
 			sls_cust_id,
 
 			CASE WHEN sls_order_dt <= 0 OR LEN(sls_order_dt) != 8 THEN NULL					-- Handling Invalid Data
-				 ELSE CAST(CAST(sls_order_dt AS VARCHAR) AS DATE)							        -- Type Casting
+				 ELSE CAST(CAST(sls_order_dt AS VARCHAR) AS DATE)							-- Type Casting
 				 END AS sls_order_dt,
 
 			CASE WHEN sls_ship_dt <= 0 OR LEN(sls_ship_dt) != 8 THEN NULL
@@ -146,7 +146,7 @@ BEGIN
 
 			CASE WHEN sls_sales IS NULL OR sls_sales <= 0 OR sls_sales != sls_quantity * ABS(sls_price)
 				 THEN sls_quantity * ABS(sls_price)				
-				 ELSE sls_sales		                            -- Handling Invalid & Missing Data by Deriving New Column from Existing Column							
+				 ELSE sls_sales		                   -- Handling Invalid & Missing Data by Deriving New Column from Existing Column							
 				 END AS sls_sales,
 
 			sls_quantity,
@@ -184,13 +184,13 @@ BEGIN
 				ELSE cid
 				END AS cid,
 			CASE 
-				WHEN bdate > GETDATE() THEN NULL										          -- Handling Invalid Value
+				WHEN bdate > GETDATE() THEN NULL										-- Handling Invalid Value
 				ELSE bdate
 				END AS bdate,
 			CASE 
-				WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'				-- Data Standardization
+				WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'					-- Data Standardization
 				WHEN UPPER(TRIM(gen)) IN ('M', 'MALE') THEN 'Male'
-				ELSE 'NA'																                      -- Handling Missing Value
+				ELSE 'NA'																-- Handling Missing Value
 				END AS gen
 		FROM raw.erp_cust_az12;
 
