@@ -29,5 +29,4 @@ This project comprises 4 phases.
 ---
 ## Repository Structure
 
-<img width="590" height="210" alt="image" src="https://github.com/user-attachments/assets/fbed29fd-501c-4ae3-884d-4d7f10ffe684" />
-
+<img width="619" height="247" alt="image" src="https://github.com/user-attachments/assets/9dd63ae4-8911-4891-85ac-0c36d4aa66dc" />
